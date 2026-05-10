@@ -1,0 +1,12 @@
+OPEN TABLE QuizMarks;
+SELECT rollNo, name, cgpa, location FROM QuizMarks into temp1 WHERE quizMarks > 85;
+OPEN TABLE temp1;
+SELECT rollNo, name, location FROM temp1 into temp2 WHERE cgpa > 8;
+CLOSE TABLE temp1;
+DROP TABLE temp1;
+OPEN TABLE temp2;
+SELECT rollNo, name FROM temp2 into GujaratList WHERE location = Gujarat;
+SELECT rollNo, name FROM temp2 into TelanganaList WHERE location = Telangana;
+SELECT rollNo, name FROM temp2 into KeralaList WHERE location = Kerala;
+CLOSE TABLE temp2;
+DROP TABLE temp2;
